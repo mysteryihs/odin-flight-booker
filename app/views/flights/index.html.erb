@@ -1,0 +1,14 @@
+<h1>Flights#index</h1>
+
+
+<%= form_tag("/flights/index", method: "get") do %>
+	<%= select_tag(:from_airport, options_for_select(@from_options)) %>
+	<%= select_tag(:to_airport, options_for_select(@to_options)) %>
+	<%= select_tag(:date, options_for_select(@date_options)) %>
+	<%= submit_tag('Search') %>
+<% end %>
+
+Your possible flights are: <br>
+<% @search_results.each do |f| %>
+	From: <%= f.from_airport.code %> To: <%= f.to_airport.code %> on <%= f.date %> and it will take <%= f.duration %> hour(s).<br>
+<% end %>
