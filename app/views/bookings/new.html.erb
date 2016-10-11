@@ -1,0 +1,16 @@
+<h1>Bookings#new</h1>
+
+You have selected flight #<%= @flight.id %> from <%= @flight.from_airport.code %> to <%= @flight.to_airport.code %> which will take <%= @flight.duration %> hours.
+
+<%= form_for @booking do |f| %>
+	<%= f.fields_for :passengers do |passengers_form| %>
+		<%= passengers_form.label :name %>
+		<%= passengers_form.text_field :name %>
+
+		<%= passengers_form.label :email %>
+		<%= passengers_form.text_field :email %></br>
+
+	<% end %>
+	<%= f.hidden_field :flight_id, :value => @flight.id %>
+	<%= submit_tag('Confirm') %>
+<% end %>

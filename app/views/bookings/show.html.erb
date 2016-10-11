@@ -1,0 +1,9 @@
+Your flight is confirmed.
+
+Your flight is #<%= @booking.flight.id %> from <%= @booking.flight.from_airport.code %> to <%= @booking.flight.to_airport.code %>. <br>
+
+The passengers are as follows: <br>
+<% @booking.passengers.each do |p| %>
+	Name: <%= p.name %><br>
+	Email: <%= p.email %><br>
+<% end %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :bookings, only: [:show, :new]
+
+  post 'bookings/', to: 'bookings#create'
   get 'flights/index'
   root to: 'flights#index'
 

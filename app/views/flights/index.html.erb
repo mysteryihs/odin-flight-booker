@@ -9,6 +9,17 @@
 <% end %>
 
 Your possible flights are: <br>
-<% @search_results.each do |f| %>
-	From: <%= f.from_airport.code %> To: <%= f.to_airport.code %> on <%= f.date %> and it will take <%= f.duration %> hour(s).<br>
+<% if !@search_results.empty? %>
+	<%= form_tag("/bookings/new", method: "get") do %>
+		<% @search_results.each do |f| %>
+			<%= radio_button_tag(:flight, f.id) %>
+			Flight #<%= f.id %> will go from <%= f.from_airport.code %> to <%= f.to_airport.code %> and will take <%= label_tag(:flight, f.duration) %> hour(s).<br>
+		<% end %>
+		<br>
+		Select number of passengers:
+		<%= select_tag(:passengers, options_for_select(@passenger_options)) %>
+		<%= submit_tag('Select') %>
+	<% end %>
+<% else %>
+	No flights selected.
 <% end %>

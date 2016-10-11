@@ -4,6 +4,7 @@ class FlightsController < ApplicationController
   	@from_options = Flight.all.map{ |f| [f.from_airport.code, f.from_airport.id]}.uniq
   	@to_options = Flight.all.map{ |f| [f.to_airport.code, f.to_airport.id]}.uniq
   	@date_options = Flight.order(date: :asc).map{ |f| [f.date, f.date]}.uniq
+  	@passenger_options = (1..4).map {|x| [x.to_s, x.to_s]}
   end
 
 end
