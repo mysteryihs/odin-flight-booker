@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to my booking site <%= @name %>!</h1>
+    <p>
+      You have successfully signed up for your flight,
+      your flight is: <%= @booking.flight.id %> from <%= @booking.flight.from_airport.code %> to <%= @booking.flight.to_airport.code %>.<br>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
